@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - docker --version # print the version for logging
+  - docker build -t dahluwalia-api-feed udagram-api-feed
+  - docker tag dahluwalia-api-feed dahluwalia3/dahluwalia-api-feed:latest
+  - docker build -t dahluwalia-api-user udagram-api-user
+  - docker tag dahluwalia-api-user dahluwalia3/dahluwalia-api-user:latest
+  - docker build -t dahluwalia-frontend udagram-frontend
+  - docker tag dahluwalia-frontend dahluwalia3/dahluwalia-frontend:latest
+  - docker build -t dahluwalia-reverse-proxy reverse-proxy
+  - docker tag dahluwalia-reverse-proxy dahluwalia3/dahluwalia-reverse-proxy:latest
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push dahluwalia3/dahluwalia-reverse-proxy
+  - docker push dahluwalia3/dahluwalia-api-feed
+  - docker push dahluwalia3/dahluwalia-api-user
+  - docker push dahluwalia3/dahluwalia-frontend
+
