@@ -1,0 +1,48 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    service: udagram-feed
+  name: udagram-feed
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: udagram-feed
+    spec:
+      containers:
+      - image: dahluwalia3/dahluwalia-api-feed
+        name: udagram-feed
+        imagePullPolicy: Always          
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m" 
+        env:
+        - name: POSTGRES_USERNAME
+          value: POSTGRES_USERNAME
+        - name: POSTGRES_PASSWORD
+          value: POSTGRES_PASSWORD
+        - name: POSTGRES_HOST
+          value: POSTGRES_HOST
+        - name: POSTGRES_DB
+          value: POSTGRES_DB
+        - name: AWS_BUCKET
+          value: AWS_BUCKET
+        - name: AWS_REGION
+          value: AWS_REGION
+        - name: AWS_PROFILE
+          value: AWS_PROFILE
+        - name: JWT_SECRET
+          value: JWT_SECRET
+        - name: URL
+          value: URL
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+
+
