@@ -24,25 +24,23 @@ spec:
             cpu: "500m" 
         env:
         - name: POSTGRES_USERNAME
-          value: POSTGRES_USERNAME
+          value: dahluwalia
         - name: POSTGRES_PASSWORD
-          value: POSTGRES_PASSWORD
+          value: Devansh12
         - name: POSTGRES_HOST
-          value: POSTGRES_HOST
+          value: dockerproject.cmevnimkz1ew.us-east-2.rds.amazonaws.com
         - name: POSTGRES_DB
-          value: POSTGRES_DB
+          value: postgres
         - name: AWS_BUCKET
-          value: AWS_BUCKET
+          value: udacity-dahluwalia3-dev
         - name: AWS_REGION
-          value: AWS_REGION
+          value: us-east-2
         - name: AWS_PROFILE
-          value: AWS_PROFILE
+          value: default
         - name: JWT_SECRET
-          value: JWT_SECRET
+          value: hello
         - name: URL
-          value: URL
-        ports:
-        - containerPort: 8080
+          value: http://localhost:8100
       restartPolicy: Always
 
 
