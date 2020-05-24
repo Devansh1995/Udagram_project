@@ -5,7 +5,7 @@ metadata:
     service: udagram-feed
   name: udagram-feed
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -24,23 +24,23 @@ spec:
             cpu: "500m" 
         env:
         - name: POSTGRES_USERNAME
-          value: dahluwalia
+          value: POSTGRES_USERNAME
         - name: POSTGRES_PASSWORD
-          value: Devansh12
+          value: POSTGRES_PASSWORD
         - name: POSTGRES_HOST
-          value: dockerproject.cmevnimkz1ew.us-east-2.rds.amazonaws.com
+          value: POSTGRES_HOST
         - name: POSTGRES_DB
-          value: postgres
+          value: POSTGRES_DB
         - name: AWS_BUCKET
-          value: udacity-dahluwalia3-dev
+          value: AWS_BUCKET
         - name: AWS_REGION
-          value: us-east-2
+          value: AWS_REGION
         - name: AWS_PROFILE
-          value: default
+          value: AWS_PROFILE
         - name: JWT_SECRET
-          value: hello
+          value: JWT_SECRET
         - name: URL
-          value: http://localhost:8100
+          value: URL
       restartPolicy: Always
 
 
